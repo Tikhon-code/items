@@ -8,10 +8,8 @@ if [[ $1 == "-e" ]]; then
     fi
 fi
 
-run_file=$(ls | grep "$run_script")
-
-if [[ $run_file != "" ]]; then
-    ./$run_file
+if [[ -f "$run_script" && -x "$run_script" ]]; then
+    ./$run_script
 else
     printf "'$run_script' not found\n"
 fi
