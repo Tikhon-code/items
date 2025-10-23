@@ -1,0 +1,17 @@
+#!/bin/bash 
+
+run_script="run.sh"
+
+if [[ $1 == "-e" ]]; then
+    if [[ $2 != "" ]]; then
+        run_script="$2"
+    fi
+fi
+
+run_file=$(ls | grep "$run_script")
+
+if [[ $run_file != "" ]]; then
+    ./$run_file
+else
+    printf "'$run_script' not found\n"
+fi
